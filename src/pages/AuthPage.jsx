@@ -3,12 +3,12 @@ import CheckOtp from "../features/authentication/CheckOtp";
 import SendOtp from "../features/authentication/SendOtp";
 
 function AuthPage() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
 
   return (
-    <div>
+    <div className="w-full pt-16">
       {step === 1 && (
         <SendOtp
           phoneNumber={phoneNumber}
