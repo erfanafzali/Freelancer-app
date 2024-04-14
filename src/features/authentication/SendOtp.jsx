@@ -1,12 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import { sendOtp } from "../../services/auth";
 import toast from "react-hot-toast";
+import Loader from "../../components/modules/Loader";
 
 function SendOtp({ phoneNumber, setPhoneNumber, setStep }) {
   const mutationFn = sendOtp;
 
-  const {  mutateAsync } = useMutation({ mutationFn });
- 
+  const { mutateAsync, isPending } = useMutation({ mutationFn });
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -41,12 +41,18 @@ function SendOtp({ phoneNumber, setPhoneNumber, setStep }) {
           className="w-full py-1.5 border-primary-600 border-2 rounded-lg outline-0 px-3 bg-secondary-200"
         />
       </div>
-      <button
-        type="submit"
-        className="w-full bg-primary-900 mt-4 py-1.5 rounded-lg text-white font-semibold hover:bg-primary-600"
-      >
-        ارسال کد تایید
-      </button>
+      <div>
+        {isPending ? (
+          <Loader />
+        ) : (
+          <button
+            type="submit"
+            className="w-full bg-primary-900 mt-4 py-1.5 rounded-lg text-white font-semibold hover:bg-primary-600"
+          >
+            ارسال کد تایید
+          </button>
+        )}
+      </div>
     </form>
   );
 }
