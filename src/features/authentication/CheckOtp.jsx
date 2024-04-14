@@ -7,7 +7,7 @@ import Loader from "../../components/modules/Loader";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useEffect, useState } from "react";
 
-const RESEND_TIME = 5;
+const RESEND_TIME = 90;
 
 function CheckOtp({ otp, setOtp, phoneNumber, setStep, reSendOtp }) {
   const [time, setTime] = useState(RESEND_TIME);
