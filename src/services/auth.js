@@ -8,4 +8,10 @@ function checkOtp(data) {
   return http.post("/user/check-otp", data).then(({ data }) => data.data);
 }
 
-export { sendOtp, checkOtp };
+function completeProfile(data) {
+  return http
+    .post("/user/complete-profile", data)
+    .then(({ data }) => data.data);
+}
+
+export { sendOtp, checkOtp, completeProfile };

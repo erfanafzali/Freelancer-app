@@ -7,12 +7,11 @@ import Loader from "../../components/modules/Loader";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useEffect, useState } from "react";
 
-const RESEND_TIME = 90;
+const RESEND_TIME = 10;
 
 function CheckOtp({ otp, setOtp, phoneNumber, setStep, reSendOtp }) {
-  const [time, setTime] = useState(RESEND_TIME);
-
   const navigate = useNavigate();
+  const [time, setTime] = useState(RESEND_TIME);
   const mutationFn = checkOtp;
 
   useEffect(() => {
@@ -30,16 +29,16 @@ function CheckOtp({ otp, setOtp, phoneNumber, setStep, reSendOtp }) {
     try {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-
-      if (user.active) {
-        //push to panel based on role
-        //if (user.role === "owner") navigate("/owner")
-        //if (user.role === "freelancer") navigate("/freelancer")
-      } else {
-        navigate("/complete-profile");
+      if (user.isActive) return navigate("/complete-profile");
+      if (user.status !== 2) {
+        navigate("/");
+        toast("بروفایل شما در انتظار تایید است" , {icon:"🫡"});
+        return;
       }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
-      console.log(error);
+      toast.error(error?.response?.data?.message);
     }
   };
 
@@ -86,7 +85,6 @@ function CheckOtp({ otp, setOtp, phoneNumber, setStep, reSendOtp }) {
           </button>
         )}
       </div>
-
       <div className="w-full flex flex-col gap-y-2 mt-3 justify-center items-center">
         {time > 0 ? (
           <p>
