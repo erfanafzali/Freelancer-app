@@ -11,27 +11,27 @@ function Sidebar() {
           to="/owner/dashboard"
           className={({ isActive }) =>
             isActive
-              ? `flex justify-center items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md ${isActive2}`
-              : "flex justify-center items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md"
+              ? `flex justify-start items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md py-1 ${isActive2}`
+              : "flex justify-start items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md py-1"
           }
         >
-          <span>داشبورد</span>
           <span>
             <HiHome />
           </span>
+          <span>داشبورد</span>
         </NavLink>
         <NavLink
           to="/owner/projects"
           className={({ isActive }) =>
             isActive
-              ? `flex justify-center items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md ${isActive2}`
-              : "flex justify-center items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md"
+              ? `flex justify-start items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md py-1 ${isActive2}`
+              : "flex justify-start items-center gap-x-2 text-base md:text-lg text-secondary-800 w-full px-4 rounded-md py-1"
           }
         >
-          <span>پروژه ها</span>
           <span>
             <HiCollection />
           </span>
+          <span>پروژه ها</span>
         </NavLink>
       </ul>
     </div>

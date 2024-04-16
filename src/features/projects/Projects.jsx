@@ -1,11 +1,11 @@
- 
+import ProjectsTable from "./ProjectsTable";
 
 function Projects() {
   return (
     <div>
-      projects
+      <ProjectsTable />
     </div>
-  )
+  );
 }
 
-export default Projects
+export default Projects;
