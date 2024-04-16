@@ -6,7 +6,7 @@ function ProjectsTable() {
   const { projects, isLoading } = useOwnerProjects();
 
   if (isLoading) return <Loader />;
-  if (projects.length) return <Empty resroucename="پروژه ای یافت نشد" />;
+  if (!projects.length) return <Empty resroucename="پروژه ای یافت نشد" />;
 
   return (
     <div className="bg-seconday-0 overflow-x-auto flex justify-center items-center w-full">
@@ -34,7 +34,10 @@ function ProjectsTable() {
               <td>
                 <div className="flex flex-wrap items-center max-w-[200px]">
                   {project.tags.map((tag) => (
-                    <span className="budge budge-secondary" key={tag}>
+                    <span
+                      className="inline-block whitespace-nowrap rounded-xl px-2 py-0.5  bg-secondary-200 text-secondary-600"
+                      key={tag}
+                    >
                       {tag}
                     </span>
                   ))}
@@ -43,9 +46,13 @@ function ProjectsTable() {
               <td>{project.freelancer?.name || "-"}</td>
               <td>
                 {project.status === "OPEN" ? (
-                  <span className="budge budge--success">باز</span>
+                  <span className=" inline-block whitespace-nowrap rounded-xl px-2 py-0.5  bg-green-500 text-white">
+                    باز
+                  </span>
                 ) : (
-                  <span className="budge budge--danger">بسته</span>
+                  <span className=" inline-block whitespace-nowrap rounded-xl px-2 py-0.5   bg-red-500 text-white ">
+                    بسته
+                  </span>
                 )}
               </td>
               <td>...</td>

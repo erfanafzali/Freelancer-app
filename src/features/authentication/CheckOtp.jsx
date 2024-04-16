@@ -7,7 +7,7 @@ import Loader from "../../components/modules/Loader";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useEffect, useState } from "react";
 
-const RESEND_TIME = 10;
+const RESEND_TIME = 90;
 
 function CheckOtp({ otp, setOtp, phoneNumber, setStep, reSendOtp }) {
   const navigate = useNavigate();
@@ -29,10 +29,10 @@ function CheckOtp({ otp, setOtp, phoneNumber, setStep, reSendOtp }) {
     try {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-      if (user.isActive) return navigate("/complete-profile");
+      if (!user.isActive) return navigate("/complete-profile");
       if (user.status !== 2) {
         navigate("/");
-        toast("بروفایل شما در انتظار تایید است" , {icon:"🫡"});
+        toast("بروفایل شما در انتظار تایید است", { icon: "🫡" });
         return;
       }
       if (user.role === "OWNER") return navigate("/owner");
