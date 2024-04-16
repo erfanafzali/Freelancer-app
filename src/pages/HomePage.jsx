@@ -1,5 +1,5 @@
 function HomePage() {
-  return <div>
+  return <div className="container">
     Home Page
   </div>;
 }

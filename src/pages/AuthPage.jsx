@@ -28,7 +28,7 @@ function AuthPage() {
   };
 
   return (
-    <div className="w-full pt-16">
+    <div className="w-full pt-16 container">
       {step === 1 && (
         <SendOtp
           phoneNumber={phoneNumber}

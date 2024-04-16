@@ -14,4 +14,8 @@ function completeProfile(data) {
     .then(({ data }) => data.data);
 }
 
-export { sendOtp, checkOtp, completeProfile };
+function getUser(data) {
+  return http.get("/user/profile", data).then(({ data }) => data.data);
+}
+
+export { sendOtp, checkOtp, completeProfile, getUser };

@@ -2,7 +2,7 @@ import ProfileForm from "../components/templates/ProfileForm";
 
 function CompleteProfilePage() {
   return (
-    <div>
+    <div className="container">
       <ProfileForm />
     </div>
   );
