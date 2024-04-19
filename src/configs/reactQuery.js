@@ -4,7 +4,7 @@ const defaultOptions = {
     catchTime: 0,
     retry: 1,
     refetchOnMount: false,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
     enabled: true,
   },
 };

@@ -7,10 +7,16 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
 import Modal from "../modules/Modal";
 import { useState } from "react";
+import ConfirmDelete from "./ConfirmDelete";
+import useRemoveOwnerProjects from "../../hooks/useRemoveOwnerProjects";
+ 
 
 function TableRowProject({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
+  const { isDeleting, removeProject } = useRemoveOwnerProjects();
+
 
   return (
     <Table.Row>
@@ -68,7 +74,16 @@ function TableRowProject({ project, index }) {
           title={`حذف ${project.title}`}
           onClose={() => setIsDeleteOpen(false)}
         >
-          delete
+          <ConfirmDelete
+            resroucename={project.title}
+            onClose={() => setIsDeleteOpen(false)}
+            onConfirm={() =>
+              removeProject(project._id, {
+                onSuccess: () => setIsDeleteOpen(false),
+              })
+            }
+            disabled={false}
+          />
         </Modal>
       </td>
     </Table.Row>

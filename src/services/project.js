@@ -6,4 +6,8 @@ function getOwnerProjects(data) {
     .then(({ data }) => data.data);
 }
 
-export { getOwnerProjects };
+function removeOwnerProjects(id) {
+  return http.delete(`/project/${id}`).then(({ data }) => data.data);
+}
+
+export { getOwnerProjects, removeOwnerProjects };
