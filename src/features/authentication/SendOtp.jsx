@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { sendOtp } from "../../services/auth";
 import toast from "react-hot-toast";
 import Loader from "../../components/modules/Loader";
-
+ 
 function SendOtp({ phoneNumber, setPhoneNumber, setStep }) {
   const mutationFn = sendOtp;
 
@@ -24,6 +24,7 @@ function SendOtp({ phoneNumber, setPhoneNumber, setStep }) {
   return (
     <form onSubmit={submitHandler} className="w-full  mb-4 max-w-xl mx-auto">
       <h1 className="text-xl text-center font-bold ">ارسال کد یک بار مصرف</h1>
+
       <div className="flex flex-col justify-center items-start ">
         <label
           htmlFor="phoneNumber"

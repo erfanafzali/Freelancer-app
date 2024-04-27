@@ -4,6 +4,7 @@ import SendOtp from "../features/authentication/SendOtp";
 import { sendOtp } from "../services/auth";
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
+ 
 
 function AuthPage() {
   const [step, setStep] = useState(1);
@@ -26,6 +27,9 @@ function AuthPage() {
       toast.error(error?.response?.data?.message);
     }
   };
+
+
+ 
 
   return (
     <div className="w-full pt-16 container">

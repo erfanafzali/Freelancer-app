@@ -52,7 +52,7 @@ function TableRowProject({ project, index }) {
       <td className="flex justify-start items-center gap-x-1">
         <button
           onClick={() => setIsEditOpen(true)}
-          className={isEditOpen ? "z-50" : "z-0"}
+          className={isEditOpen ? "z-40" : "z-0"}
         >
           <FaEdit className="w-6 h-6 text-primary-800 " />
         </button>
@@ -65,7 +65,7 @@ function TableRowProject({ project, index }) {
         </Modal>
         <button
           onClick={() => setIsDeleteOpen(true)}
-          className={isDeleteOpen ? "z-50" : "z-0"}
+          className={isDeleteOpen ? "z-40" : "z-0"}
         >
           <FaTrash className="text-error h-5 w-5" />
         </button>
