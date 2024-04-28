@@ -9,14 +9,14 @@ import Modal from "../modules/Modal";
 import { useState } from "react";
 import ConfirmDelete from "./ConfirmDelete";
 import useRemoveOwnerProjects from "../../hooks/useRemoveOwnerProjects";
- 
+import CreateProjectForm from "../../features/project/CreateProjectForm";
+import ToggleProjectStatus from "./ToggleProjectStatus";
 
 function TableRowProject({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const { isDeleting, removeProject } = useRemoveOwnerProjects();
-
 
   return (
     <Table.Row>
@@ -39,7 +39,8 @@ function TableRowProject({ project, index }) {
       </td>
       <td>{project.freelancer?.name || "-"}</td>
       <td>
-        {project.status === "OPEN" ? (
+        <ToggleProjectStatus project={project}/>
+        {/* {project.status === "OPEN" ? (
           <span className=" inline-block whitespace-nowrap rounded-xl px-2 py-0.5  bg-green-500 text-white">
             باز
           </span>
@@ -47,7 +48,7 @@ function TableRowProject({ project, index }) {
           <span className=" inline-block whitespace-nowrap rounded-xl px-2 py-0.5   bg-red-500 text-white ">
             بسته
           </span>
-        )}
+        )} */}
       </td>
       <td className="flex justify-start items-center gap-x-1">
         <button
@@ -61,7 +62,10 @@ function TableRowProject({ project, index }) {
           title={`ویرایش ${project.title}`}
           onClose={() => setIsEditOpen(false)}
         >
-          edit
+          <CreateProjectForm
+            projectToEdit={project}
+            onClose={() => setIsEditOpen(false)}
+          />
         </Modal>
         <button
           onClick={() => setIsDeleteOpen(true)}

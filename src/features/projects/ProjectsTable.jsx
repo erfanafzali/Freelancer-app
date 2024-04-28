@@ -15,7 +15,7 @@ function ProjectsTable() {
       <Table.Header>
         <th>#</th>
         <th>عنوان پروژه</th>
-        <th>توضیحات</th>
+        <th>دسته بندی</th>
         <th>هزینه</th>
         <th>زمان تحویل</th>
         <th>تگ ها</th>

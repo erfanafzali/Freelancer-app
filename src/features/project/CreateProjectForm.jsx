@@ -4,18 +4,71 @@ import SelectForm from "../../components/templates/SelectForm";
 import { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
 import DatePickerForm from "../../components/templates/DatePickerForm";
+import useCategories from "../../hooks/useCategories";
+import useCreateProject from "../../hooks/useCreateProject";
+import Loader from "../../components/modules/Loader";
+import useEditProject from "../../hooks/useEditProject";
 
-function CreateProjectForm() {
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
+function CreateProjectForm({ onClose, projectToEdit = {} }) {
+  const { _id: editId } = projectToEdit;
+  const isEditSession = Boolean(editId);
+  const {
+    title,
+    description,
+    budget,
+    deadline,
+    category,
+    tags: prevTags,
+  } = projectToEdit;
+
+  let editValue = {};
+  if (isEditSession) {
+    editValue = {
+      title,
+      description,
+      budget,
+      category: category._id,
+    };
+  }
+
+  const [tags, setTags] = useState(prevTags || []);
+  const [date, setDate] = useState(new Date(deadline || ""));
+  const { myCategories } = useCategories();
+  const { isCreating, createNewProject } = useCreateProject();
+  const { isEditing, editNewProject } = useEditProject();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+    reset,
+  } = useForm({ defaultValues: editValue });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const newProject = {
+      ...data,
+      deadline: new Date(date).toISOString(),
+      tags,
+    };
+
+    if (isEditSession) {
+      editNewProject(
+        { id: editId, newProject },
+        {
+          onSuccess: () => {
+            onClose();
+            reset();
+          },
+        }
+      );
+    } else {
+      createNewProject(newProject, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    }
   };
 
   return (
@@ -52,6 +105,7 @@ function CreateProjectForm() {
         register={register}
         required
         name="budget"
+        type="number"
         label="بودجه پروژه"
         validationSchema={{
           required: "بودجه ضروری",
@@ -66,7 +120,7 @@ function CreateProjectForm() {
         label="دسته بندی"
         name="category"
         register={register}
-        options={[]}
+        options={myCategories}
         required
         errors={errors}
         validationSchema={{
@@ -78,12 +132,18 @@ function CreateProjectForm() {
         <TagsInput value={tags} onChange={setTags} name="tags" />
       </div>
       <DatePickerForm date={date} setDate={setDate} label="دد لاین" />
-      <button
-        type="submit"
-        className="w-full bg-primary-900 rounded-lg text-secondary-0 py-2 font-bold"
-      >
-        تایید
-      </button>
+      <div className="!mt-8">
+        {isCreating ? (
+          <Loader />
+        ) : (
+          <button
+            type="submit"
+            className="w-full bg-primary-900 rounded-lg text-secondary-0 py-2 font-bold"
+          >
+            تایید
+          </button>
+        )}
+      </div>
     </form>
   );
 }
