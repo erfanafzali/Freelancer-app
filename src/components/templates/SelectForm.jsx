@@ -8,15 +8,15 @@ function SelectForm({
   errors
 }) {
   return (
-    <div className="mb-6 md:mb-8">
-      <label htmlFor="name">
+    <div className="md:mb-3  mb-2">
+      <label htmlFor="name" className="text-sm md:text-base">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       <select
         {...register(name, validationSchema)}
         name="name"
         id="name"
-        className="bg-secondary-200 w-full py-2 px-3 rounded-lg mt-1"
+        className="bg-secondary-200 w-full py-1 md:py-2 px-3 rounded-lg mt-1"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value} className="w-full">

@@ -1,8 +1,13 @@
 import { useForm } from "react-hook-form";
 import TextFeild from "../../components/templates/TextFeild";
 import SelectForm from "../../components/templates/SelectForm";
+import { useState } from "react";
+import { TagsInput } from "react-tag-input-component";
+import DatePickerForm from "../../components/templates/DatePickerForm";
 
 function CreateProjectForm() {
+  const [tags, setTags] = useState([]);
+  const [date, setDate] = useState(new Date());
   const {
     register,
     formState: { errors },
@@ -14,7 +19,7 @@ function CreateProjectForm() {
   };
 
   return (
-    <form className="pb-5" onSubmit={handleSubmit(onSubmit)}>
+    <form className="pb-5 " onSubmit={handleSubmit(onSubmit)}>
       <TextFeild
         register={register}
         required
@@ -68,6 +73,11 @@ function CreateProjectForm() {
           required: "انتخاب دسته بندی ضروری",
         }}
       />
+      <div className="mb-3 md:mb-5">
+        <label htmlFor="tags">تگ ها</label>
+        <TagsInput value={tags} onChange={setTags} name="tags" />
+      </div>
+      <DatePickerForm date={date} setDate={setDate} label="دد لاین" />
       <button
         type="submit"
         className="w-full bg-primary-900 rounded-lg text-secondary-0 py-2 font-bold"
