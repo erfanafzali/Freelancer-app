@@ -6,7 +6,7 @@ import NotFound from "../components/modules/NotFound";
 import OwnerPage from "../pages/OwnerPage";
 import LayoutOwner from "../layouts/LayoutOwner";
 import Projects from "../features/projects/Projects";
-import MyProject from "../features/project/MyProject";
+import ProjectPage from "../pages/ProjectPage";
 
 function Router() {
   return (
@@ -19,7 +19,7 @@ function Router() {
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<OwnerPage />} />
           <Route path="projects" element={<Projects />} />
-          <Route path="projects/:id" element={<MyProject />} />
+          <Route path="projects/:id" element={<ProjectPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

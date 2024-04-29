@@ -1,31 +1,29 @@
-import { Switch } from "@headlessui/react";
-import { useState } from "react";
+import useToggle from "../../hooks/useToggle";
+import Loader from "../modules/Loader";
+import Toggle from "../modules/Toggle";
 
 function ToggleProjectStatus({ project }) {
-  const [enabled, setEnabled] = useState(project.status === "OPEN" ? true : false );
+  const { isUpdating, toggleStatus } = useToggle();
+
+  const toggleHandler = () => {
+    const newStatus = project.status === "OPEN" ? "CLOSED" : "OPEN";
+    toggleStatus({
+      id: project._id,
+      data: { status: newStatus },
+    });
+  };
 
   return (
-    <div>
-      <Switch.Group>
-        <div className="flex items-center gap-x-2">
-          <Switch.Label className="">
-            {project.status === "OPEN" ? "باز" : "بسته"}
-          </Switch.Label>
-          <Switch
-            checked={enabled}
-            onChange={setEnabled}
-            className={`${
-              enabled ? "bg-blue-600" : "bg-gray-200"
-            } relative inline-flex h-6 w-11 items-center rounded-full transition-colors  `}
-          >
-            <span
-              className={`${
-                enabled ? "-translate-x-6" : "-translate-x-1"
-              } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
-            />
-          </Switch>
-        </div>
-      </Switch.Group>
+    <div className="w-[5rem]">
+      {isUpdating ? (
+        <Loader />
+      ) : (
+        <Toggle
+          toggleHandler={toggleHandler}
+          label={project.status === "OPEN" ? "باز" : "بسته"}
+          enabled={project.status === "OPEN" ? true : false}
+        />
+      )}
     </div>
   );
 }

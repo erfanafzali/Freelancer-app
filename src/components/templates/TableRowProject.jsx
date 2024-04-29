@@ -39,16 +39,7 @@ function TableRowProject({ project, index }) {
       </td>
       <td>{project.freelancer?.name || "-"}</td>
       <td>
-        <ToggleProjectStatus project={project}/>
-        {/* {project.status === "OPEN" ? (
-          <span className=" inline-block whitespace-nowrap rounded-xl px-2 py-0.5  bg-green-500 text-white">
-            باز
-          </span>
-        ) : (
-          <span className=" inline-block whitespace-nowrap rounded-xl px-2 py-0.5   bg-red-500 text-white ">
-            بسته
-          </span>
-        )} */}
+        <ToggleProjectStatus project={project} />
       </td>
       <td className="flex justify-start items-center gap-x-1">
         <button

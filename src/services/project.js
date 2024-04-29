@@ -20,4 +20,14 @@ function editProject({ id, newProject }) {
     .then(({ data }) => data.data);
 }
 
-export { getOwnerProjects, removeOwnerProjects, createProject, editProject };
+function toggleProjectStatus({ id, data }) {
+  return http.patch(`/project/${id}`, data).then(({ data }) => data.data);
+}
+
+export {
+  getOwnerProjects,
+  removeOwnerProjects,
+  createProject,
+  editProject,
+  toggleProjectStatus,
+};
