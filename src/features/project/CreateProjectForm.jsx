@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import TextFeild from "../../components/templates/TextFeild";
-import SelectForm from "../../components/templates/SelectForm";
 import { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
+import TextFeild from "../../components/templates/TextFeild";
+import SelectForm from "../../components/templates/SelectForm";
 import DatePickerForm from "../../components/templates/DatePickerForm";
 import useCategories from "../../hooks/useCategories";
 import useCreateProject from "../../hooks/useCreateProject";
@@ -35,7 +35,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
   const [date, setDate] = useState(new Date(deadline || ""));
   const { myCategories } = useCategories();
   const { isCreating, createNewProject } = useCreateProject();
-  const { isEditing, editNewProject } = useEditProject();
+  const { editNewProject } = useEditProject();
 
   const {
     register,
