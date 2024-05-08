@@ -2,6 +2,7 @@ import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import truncateText from "../../utils/truncateText";
 import Table from "./Table";
+import { HiEye } from "react-icons/hi";
 
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
@@ -11,12 +12,13 @@ import ConfirmDelete from "./ConfirmDelete";
 import useRemoveOwnerProjects from "../../hooks/useRemoveOwnerProjects";
 import CreateProjectForm from "../../features/project/CreateProjectForm";
 import ToggleProjectStatus from "./ToggleProjectStatus";
+import { Link } from "react-router-dom";
 
 function TableRowProject({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-  const { isDeleting, removeProject } = useRemoveOwnerProjects();
+  const { removeProject } = useRemoveOwnerProjects();
 
   return (
     <Table.Row>
@@ -41,7 +43,7 @@ function TableRowProject({ project, index }) {
       <td>
         <ToggleProjectStatus project={project} />
       </td>
-      <td className="flex justify-start items-center gap-x-1">
+      <td className="flex justify-center items-center  gap-x-1">
         <button
           onClick={() => setIsEditOpen(true)}
           className={isEditOpen ? "z-40" : "z-0"}
@@ -80,6 +82,11 @@ function TableRowProject({ project, index }) {
             disabled={false}
           />
         </Modal>
+      </td>
+      <td>
+        <Link to={project._id} className="flex justify-center items-center">
+          <HiEye className="w-5 h-5 text-primary-900"/>
+        </Link>
       </td>
     </Table.Row>
   );
