@@ -72,7 +72,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
   };
 
   return (
-    <form className="pb-5 " onSubmit={handleSubmit(onSubmit)}>
+    <form className="pb-5" onSubmit={handleSubmit(onSubmit)}>
       <TextFeild
         register={register}
         required
