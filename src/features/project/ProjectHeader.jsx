@@ -8,9 +8,9 @@ function ProjectHeader({ project }) {
       <button onClick={moveBack}>
         <FaArrowRightLong className="w-5 h-5 text-primary-900" />
       </button>
-      <h1>
-        <span>لیست درخواست های </span>
-        <span>{project.title}</span>
+      <h1 className="font-bold">
+        <span className="text-sm md:text-base">لیست درخواست های </span>
+        <span className="text-sm md:text-base">{project.title}</span>
       </h1>
     </div>
   );

@@ -5,7 +5,11 @@ const useUser = () => {
   const queryKey = ["profile"];
   const queryFn = getUser;
 
-  return useQuery({ queryKey, queryFn });
+  const { data, isLoading } = useQuery({ queryKey, queryFn });
+
+  const { user } = data || {};
+
+  return { user, isLoading };
 };
 
 export default useUser;

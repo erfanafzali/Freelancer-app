@@ -18,4 +18,11 @@ function getUser(data) {
   return http.get("/user/profile", data).then(({ data }) => data.data);
 }
 
-export { sendOtp, checkOtp, completeProfile, getUser };
+
+function logOut() {
+  return http.post("/user/logout").then(({ data }) => data.data);
+}
+
+
+
+export { sendOtp, checkOtp, completeProfile, getUser , logOut};
