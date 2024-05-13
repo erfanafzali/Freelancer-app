@@ -4,9 +4,9 @@ import HomePage from "../pages/HomePage";
 import CompleteProfilePage from "../pages/CompleteProfilePage";
 import NotFound from "../components/modules/NotFound";
 import OwnerPage from "../pages/OwnerPage";
-import LayoutOwner from "../layouts/LayoutOwner";
 import Projects from "../features/projects/Projects";
 import ProjectPage from "../pages/ProjectPage";
+import OwnerLayout from "../layouts/OwnerLayout";
 
 function Router() {
   return (
@@ -15,7 +15,7 @@ function Router() {
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/complete-profile" element={<CompleteProfilePage />} />
-        <Route path="/owner" element={<LayoutOwner />}>
+        <Route path="/owner" element={<OwnerLayout />}>
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<OwnerPage />} />
           <Route path="projects" element={<Projects />} />
