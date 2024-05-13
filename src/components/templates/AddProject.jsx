@@ -18,7 +18,7 @@ function AddProject() {
         <span>
           <MdAdd className=" h-6 w-6" />
         </span>
-        <span className="whitespace-nowrap">اضافه کردن پروژه</span>
+        <span className="whitespace-nowrap dark:text-white">اضافه کردن پروژه</span>
       </button>
       <Modal
         onOpen={isAddOpen}

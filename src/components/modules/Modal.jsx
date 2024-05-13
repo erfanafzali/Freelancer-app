@@ -12,7 +12,7 @@ function Modal({ onOpen, onClose, title, children }) {
             className="fixed top-[47%] max-h-[calc(100vh-4rem)] overflow-y-auto left-1/2  -translate-x-1/2 -translate-y-1/2 rounded-lg bg-secondary-0 p-4 shadow-lg transition-all duration-500 ease-out w-80 sm:w-[400px] md:w-[500px] lg:w-[650px]"
           >
             <div className="w-full flex justify-between items-center border-b mb-4 pb-3 border-secondary-700 ">
-              <p className="text-lg md:text-xl font-bold">{title}</p>
+              <p className="text-lg md:text-xl font-bold dark:text-white" >{title}</p>
               <button onClick={onClose}>
                 <IoCloseCircle className="w-6 h-6 text-error md:w-8 md:h-8" />
               </button>

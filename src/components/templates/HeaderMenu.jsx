@@ -1,6 +1,5 @@
 import { FaUserAlt } from "react-icons/fa";
-import { IoMdMoon } from "react-icons/io";
-import { MdSunny } from "react-icons/md";
+ 
 
 import { Link } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
