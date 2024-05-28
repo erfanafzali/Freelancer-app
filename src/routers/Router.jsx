@@ -8,6 +8,11 @@ import Projects from "../features/projects/Projects";
 import ProjectPage from "../pages/ProjectPage";
 import OwnerLayout from "../layouts/OwnerLayout";
 
+import FreelancerDashboard from "../features/freelancer/FreelancerDashboard";
+import Proposals from "../features/freelancer/Proposals";
+import SubmittedProjects from "../features/freelancer/SubmittedProjects";
+import FreelancerLayout from "../layouts/FreelancerLayout";
+
 function Router() {
   return (
     <div>
@@ -20,6 +25,12 @@ function Router() {
           <Route path="dashboard" element={<OwnerPage />} />
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:id" element={<ProjectPage />} />
+        </Route>
+        <Route path="/freelancer" element={<FreelancerLayout />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<FreelancerDashboard />} />
+          <Route path="proposals" element={<Proposals />} />
+          <Route path="projects" element={<SubmittedProjects />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

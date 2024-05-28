@@ -28,6 +28,10 @@ function getProject(id) {
   return http.get(`/project/${id}`).then(({ data }) => data.data);
 }
 
+function getProjects() {
+  return http.get("/project/list").then(({ data }) => data.data);
+}
+
 export {
   getOwnerProjects,
   removeOwnerProjects,
@@ -35,4 +39,5 @@ export {
   editProject,
   toggleProjectStatus,
   getProject,
+  getProjects,
 };
