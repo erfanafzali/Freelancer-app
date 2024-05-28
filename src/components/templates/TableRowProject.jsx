@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 function TableRowProject({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  console.log(project )
 
   const { removeProject } = useRemoveOwnerProjects();
   

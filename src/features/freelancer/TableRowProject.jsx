@@ -5,6 +5,7 @@ import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import truncateText from "../../utils/truncateText";
 import { MdAssignment } from "react-icons/md";
 import Modal from "../../components/modules/Modal";
+import CreatedProposals from "./CreatedProposals";
 
 const projectStatus = {
   OPEN: {
@@ -13,7 +14,7 @@ const projectStatus = {
   },
   CLOSED: {
     label: "بسته",
-    className: "bg-قثی-500 text-white",
+    className: "bg-red-500 text-white",
   },
 };
 
@@ -41,7 +42,10 @@ function TableRowProject({ project, index }) {
           onClose={() => setOpen(false)}
           title={`درخواست انجام پروژه ${project.title}`}
         >
-          ...
+          <CreatedProposals
+            onClose={() => setOpen(false)}
+            projectId={project._id}
+          />
         </Modal>
         <button onClick={() => setOpen(true)}>
           <MdAssignment className="w-7 h-7 text-primary-900" />

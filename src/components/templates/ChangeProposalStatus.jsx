@@ -4,7 +4,6 @@ import useProposalStatus from "../../hooks/useProposalStatus";
 import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import Loader from "../modules/Loader";
- 
 
 const options = [
   {
@@ -27,20 +26,16 @@ function ChangeProposalStatus({ proposalId, onClose }) {
   const { isUpdating, propsalStatus } = useProposalStatus();
   const queryClient = useQueryClient();
 
- 
- 
   const onSubmit = (data) => {
     propsalStatus(
-      { id: proposalId, data },
+      { proposalId, projectId, ...data },
       {
-        onSuccess: (data) => {
+        onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: ["project", projectId] });
           onClose();
-          console.log(data);
         },
       }
     );
-    console.log(data);
   };
 
   return (
