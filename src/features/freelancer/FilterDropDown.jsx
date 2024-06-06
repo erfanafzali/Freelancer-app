@@ -1,8 +1,9 @@
 import { useSearchParams } from "react-router-dom";
+import SelectFilter from "../../components/templates/SelectFilter";
 
 function FilterDropDown({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const category = searchParams.get(filterField);
+  const value = searchParams.get(filterField);
 
   const handleChange = (e) => {
     searchParams.set(filterField, e.target.value);
@@ -11,13 +12,7 @@ function FilterDropDown({ filterField, options }) {
 
   return (
     <div>
-      <select value={category} onChange={handleChange} className="">
-        {options.map((item) => (
-          <option key={item.id} value={item.value}>
-            {item.label}
-          </option>
-        ))}
-      </select>
+      <SelectFilter options={options} onChange={handleChange} value={value} />
     </div>
   );
 }
