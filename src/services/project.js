@@ -28,8 +28,8 @@ function getProject(id) {
   return http.get(`/project/${id}`).then(({ data }) => data.data);
 }
 
-function getProjects() {
-  return http.get("/project/list").then(({ data }) => data.data);
+function getProjects(queryString) {
+  return http.get(`/project/list${queryString}`).then(({ data }) => data.data);
 }
 
 export {

@@ -48,7 +48,7 @@ function FreelancerLayout() {
             <span>
               <HiCollection />
             </span>
-            <span> درخواست ها </span>
+            <span className="whitespace-nowrap">درخواست ها </span>
           </NavLink>
         </ul>
       </Sidebar>

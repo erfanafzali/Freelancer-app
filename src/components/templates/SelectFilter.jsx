@@ -6,7 +6,7 @@ function SelectFilter({ value, onChange, options }) {
       className="text-white bg-primary-900 rounded-lg py-1.5 px-3 text-sm  font-bold"
     >
       {options.map((item) => (
-        <option key={item.id} value={item.value}>
+        <option key={item.value} value={item.value}>
           {item.label}
         </option>
       ))}

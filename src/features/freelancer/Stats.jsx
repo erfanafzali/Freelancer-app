@@ -15,7 +15,7 @@ function Stats({ proposals }) {
 
   return (
     <div className="w-full  gap-x-8 mt-8">
-      <div className="w-full grid md:grid-cols-2 grid-cols-1 min-h-60 gap-x-4 gap-y-4">
+      <div className="w-full grid md:grid-cols-2 grid-cols-1 min-h-60 gap-x-4 gap-y-4 ">
         <Stat
           color="primary"
           numOfProjects={numOfProposals}
@@ -27,7 +27,7 @@ function Stats({ proposals }) {
         <Stat
           color="green"
           numOfProjects={acceptedProposals.length}
-          title="درخواست های تایید شده"
+          title="تایید شده"
           icon={
             <HiCurrencyDollar className="sm:w-24 sm:h-24   w-14 h-14 min-w-14   p-2 rounded-full bg-green-300 " />
           }

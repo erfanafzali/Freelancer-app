@@ -3,7 +3,7 @@ import SelectFilter from "../../components/templates/SelectFilter";
 
 function FilterDropDown({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const value = searchParams.get(filterField);
+  const filterValue = searchParams.get(filterField) || "";
 
   const handleChange = (e) => {
     searchParams.set(filterField, e.target.value);
@@ -12,7 +12,11 @@ function FilterDropDown({ filterField, options }) {
 
   return (
     <div>
-      <SelectFilter options={options} onChange={handleChange} value={value} />
+      <SelectFilter
+        options={options}
+        onChange={handleChange}
+        value={filterValue}
+      />
     </div>
   );
 }
