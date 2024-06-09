@@ -26,4 +26,18 @@ function logOut() {
   return http.post("/user/logout").then(({ data }) => data.data);
 }
 
-export { sendOtp, checkOtp, completeProfile, getUser, logOut, getUsers };
+function changeUserStatus({ userId, data }) {
+  return http
+    .patch(`/admin/user/verify/${userId}`, data)
+    .then(({ data }) => data.data);
+}
+
+export {
+  sendOtp,
+  checkOtp,
+  completeProfile,
+  getUser,
+  logOut,
+  getUsers,
+  changeUserStatus,
+};

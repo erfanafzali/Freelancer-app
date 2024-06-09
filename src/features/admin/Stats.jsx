@@ -5,7 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { PiGridFourFill } from "react-icons/pi";
 
 function Stats({ proposals, projects, users }) {
-  console.log(proposals);
+ 
 
   return (
     <div className="w-full  gap-x-8 mt-8">

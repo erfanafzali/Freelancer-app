@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CheckOtp from "../features/authentication/CheckOtp";
 import SendOtp from "../features/authentication/SendOtp";
 import { sendOtp } from "../services/auth";
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
- 
+import useUser from "../hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 function AuthPage() {
   const [step, setStep] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
+  const navigate = useNavigate();
 
   const mutationFn = sendOtp;
 
@@ -28,8 +30,11 @@ function AuthPage() {
     }
   };
 
+  const { user } = useUser();
 
- 
+  useEffect(() => {
+    if (user) navigate("/", { replace: true });
+  }, [user, navigate]);
 
   return (
     <div className="w-full pt-16 container">
