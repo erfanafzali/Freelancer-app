@@ -11,7 +11,7 @@ function Stats({ proposals }) {
 
   const balance = acceptedProposals.reduce((acc, curr) => acc + curr.price, 0);
 
-  console.log(numOfProposals, acceptedProposals, balance);
+ 
 
   return (
     <div className="w-full  gap-x-8 mt-8">

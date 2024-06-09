@@ -8,7 +8,7 @@ const statusStyle = [
   { label: "تایید شده", className: "bg-green-500" },
 ];
 function TableRowProposals({ proposal, index }) {
-  console.log(proposal);
+   
   return (
     <Table.Row>
       <td>{index + 1}</td>

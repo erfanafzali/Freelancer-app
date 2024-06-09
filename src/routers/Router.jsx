@@ -12,6 +12,7 @@ import FreelancerDashboard from "../features/freelancer/FreelancerDashboard";
 import Proposals from "../features/freelancer/Proposals";
 import SubmittedProjects from "../features/freelancer/SubmittedProjects";
 import FreelancerLayout from "../layouts/FreelancerLayout";
+import ProtectRoute from "./ProtectRoute";
 
 function Router() {
   return (
@@ -20,13 +21,27 @@ function Router() {
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/complete-profile" element={<CompleteProfilePage />} />
-        <Route path="/owner" element={<OwnerLayout />}>
+        <Route
+          path="/owner"
+          element={
+            <ProtectRoute>
+              <OwnerLayout />
+            </ProtectRoute>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<OwnerPage />} />
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:id" element={<ProjectPage />} />
         </Route>
-        <Route path="/freelancer" element={<FreelancerLayout />}>
+        <Route
+          path="/freelancer"
+          element={
+            <ProtectRoute>
+              <FreelancerLayout />
+            </ProtectRoute>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<FreelancerDashboard />} />
           <Route path="proposals" element={<Proposals />} />
@@ -39,3 +54,6 @@ function Router() {
 }
 
 export default Router;
+
+//* authentication ==> who is he/she ? , name...?
+//* authorized ==> persmission ,access to route or file

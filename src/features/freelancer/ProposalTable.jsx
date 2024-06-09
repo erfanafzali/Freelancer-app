@@ -6,7 +6,7 @@ import useProposals from "../../hooks/useProposals";
 
 function ProjectsTable() {
   const { proposals, isLoading } = useProposals();
-  console.log(proposals);
+ 
 
   if (isLoading) return <Loader />;
   if (!proposals.length) return <Empty resroucename="پروژه ای یافت نشد" />;
