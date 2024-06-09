@@ -18,11 +18,12 @@ function getUser(data) {
   return http.get("/user/profile", data).then(({ data }) => data.data);
 }
 
+function getUsers() {
+  return http.get("/admin/user/list").then(({ data }) => data.data);
+}
 
 function logOut() {
   return http.post("/user/logout").then(({ data }) => data.data);
 }
 
-
-
-export { sendOtp, checkOtp, completeProfile, getUser , logOut};
+export { sendOtp, checkOtp, completeProfile, getUser, logOut, getUsers };

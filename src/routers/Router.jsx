@@ -13,6 +13,9 @@ import Proposals from "../features/freelancer/Proposals";
 import SubmittedProjects from "../features/freelancer/SubmittedProjects";
 import FreelancerLayout from "../layouts/FreelancerLayout";
 import ProtectRoute from "./ProtectRoute";
+import AdminLayout from "../layouts/AdminLayout";
+import AdminDashboard from "../features/admin/AdminDashboard";
+import UserPage from "../pages/UserPage";
 
 function Router() {
   return (
@@ -46,6 +49,20 @@ function Router() {
           <Route path="dashboard" element={<FreelancerDashboard />} />
           <Route path="proposals" element={<Proposals />} />
           <Route path="projects" element={<SubmittedProjects />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectRoute>
+              <AdminLayout />
+            </ProtectRoute>
+          }
+        >
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="users" element={<UserPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
