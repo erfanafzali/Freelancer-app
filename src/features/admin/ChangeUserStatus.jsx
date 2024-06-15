@@ -1,9 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+ 
 import Loader from "../../components/modules/Loader";
 import SelectForm from "../../components/templates/SelectForm";
-import useProposalStatus from "../../hooks/useProposalStatus";
+ 
 import useUserStatus from "../../hooks/useUserStatus";
 
 const options = [
